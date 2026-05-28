@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>佐藤 俊一郎 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>佐藤 俊一郎 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社AGE technologies</a>
+  <a href="#k2">2. 株式会社ZUU</a>
+  <a href="#k3">3. 株式会社IPPO（イッポ）</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">コーポレート部長</span><span class="badge badge-blue">未上場（IPO準備中）</span></div>
+  <div class="co-name">株式会社AGE technologies</div>
+  <div class="co-url"><a href="https://age-technologies.co.jp/" target="_blank">https://age-technologies.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都新宿区西新宿7丁目3−4 アソルティ西新宿 2F</td></tr><tr><th>設立</th><td>2018年3月</td></tr><tr><th>従業員数</th><td>20名規模</td></tr><tr><th>上場区分</th><td>未上場（IPO準備中）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li><strong>50兆円市場の&quot;相続インフラ&quot;を創るAgeTech最前線</strong><br>超高齢社会を背景に、相続DX・資産承継・不動産・保険・金融まで横断する事業展開。未成熟な巨大市場で&quot;新しい社会インフラ&quot;を構築する挑戦。</li><li><strong>PMF後の急成長フェーズで、事業をつくる経験</strong><br>累計利用者5万人突破、Web相続サービス利用者数No.1、シリーズBで5.9億円調達済み。IPOを視野に、事業モデル・提携戦略・組織づくりまで深く関われる拡大フェーズ。</li><li><strong>少数精鋭だからこそ得られる大きな裁量と成長機会</strong><br>20名規模のフラットな組織体制、服装・髪型自由のカルチャー、一人ひとりが主体的に事業へ関わる環境。AgeTechや相続DXは、まだ勝ち筋が決まり切っていない新領域。新市場を切り拓く事業責任と社会課題解決の実感を得られるフェーズ。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2018年3月設立、「資産と想いを次世代につなぎ、日本の可能性をひらいていく」をミッションに掲げ、日本の超高齢社会という巨大な社会課題にテクノロジーで挑むAgeTechスタートアップ。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2018年3月設立、「資産と想いを次世代につなぎ、日本の可能性をひらいていく」をミッションに掲げ、日本の超高齢社会という巨大な社会課題にテクノロジーで挑むAgeTechスタートアップ。</p><p>これまで本格的なDX化が進んでこなかった相続領域へ参入し、相続手続きプラットフォーム「そうぞくドットコム」を展開。戸籍収集、書類作成、金融機関・法務局対応など煩雑な相続手続きをオンライン完結型へ変革し、累計利用者数5万人突破、「相続手続きWebサービス利用者数No.1」を獲得するまでに成長。さらに、不動産売却支援、保険活用、ファイナンスサービスなど50兆円規模とも言われる相続財産マーケット全体へ事業領域を拡大中。</p><p>2023年にはシリーズBラウンドで総額5.9億円の資金調達を実施し、KUSABI、DGベンチャーズ、三菱UFJ信託銀行など有力投資家が参画。IPOも視野に入れながら、相続を単なる&quot;手続き&quot;ではなく、&quot;資産と想いを未来へつなぐ社会インフラ&quot;へ進化させる挑戦を続ける成長企業。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 コーポレート部長（管理部長）</div>
+          <div class="job-preview">IPO準備における人事・労務・総務・経理財務の横断的マネジメント</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■仕事概要</strong><br>IPOを視野に入れた成長フェーズにおいて、コーポレート部門全体を統括していただきます。人事・労務・総務・経理財務の各機能を横断的にマネジメントしながら、上場準備に必要な社内体制の整備と業務プロセスの高度化を推進するリーダーポジションです。各種専門家（税理士・社労士・弁護士等）との連携はもちろん、経営陣への報告・意思決定支援も担っていただきます。</p><p><strong>【具体的な業務内容】</strong></p><ul><li><strong>① 人事・労務管理</strong><br>・採用戦略の立案および採用業務の統括（要件定義・スカウト・選考・オファー）<br>・組織設計・人員計画・評価制度の構築・運用<br>・労務管理体制の整備（就業規則・社内規程の策定・改定）<br>・勤怠管理・給与計算・社会保険手続きの監督<br>・社労士・弁護士等の外部専門家との連携・管理</li><li><strong>② 総務・経理財務管理</strong><br>・経理財務業務の統括（月次・年次決算、資金管理、税務申告対応）<br>・総務全般（オフィス管理・備品管理・契約書管理・情報セキュリティ対応）<br>・税理士・会計士等の外部専門家との連携・管理<br>・法務対応（契約書レビュー・リーガルリスク管理）</li><li><strong>③ IPO準備・内部管理体制の構築</strong><br>・上場審査に対応した内部管理体制・内部統制の整備<br>・監査法人、主幹事証券、IPOアドバイザーとの折衝・調整<br>・各種開示書類の作成サポート（Sスケジュール・Dスケジュール対応）<br>・コンプライアンス体制、リスク管理フレームワークの構築</li><li><strong>④ マネジメント・組織横断業務</strong><br>・コーポレート部門のチームビルディングおよびメンバー育成<br>・経営陣へのレポーティング・意思決定支援<br>・各事業部との連携によるバックオフィス業務の効率化推進<br>・オフィス移転・ISMS対応・補助金申請などのプロジェクト統括</li></ul><p><strong>必須スキル</strong></p><ul><li><span class='tag tag-must'>MUST</span> 人事/労務/総務/経理財務のうち複数領域における実務経験5年以上</li><li><span class='tag tag-must'>MUST</span> IPO（新規上場）準備の実務経験（主幹事証券・監査法人対応を含む）</li><li><span class='tag tag-must'>MUST</span> チームマネジメント経験（直接報告メンバーの育成・評価経験）</li><li><span class='tag tag-must'>MUST</span> 各種外部専門家（税理士・社労士・弁護士等）との折衝・管理経験</li></ul><p><strong>歓迎スキル</strong></p><ul><li><span class='tag tag-want'>WANT</span> スタートアップ、ベンチャー企業でのコーポレート管理職経験</li><li><span class='tag tag-want'>WANT</span> グロースフェーズ（シリーズB以降）での組織拡大・制度整備の経験</li><li><span class='tag tag-want'>WANT</span> 公認会計士、税理士、社会保険労務士などの保有資格</li><li><span class='tag tag-want'>WANT</span> SaaSツールを活用したバックオフィス業務のDX化推進経験</li><li><span class='tag tag-want'>WANT</span> 上場後の開示対応、IR業務の経験</li></ul><p><strong>求める人物像</strong></p><ul><li>経営視点でコーポレート部門の価値最大化を目指せる方</li><li>スピード感のある環境で変化を楽しみながら仕事に取り組める方</li><li>高い倫理観とコンプライアンス意識を持ち、誠実に業務遂行できる方</li><li>メンバーの主体性を引き出すマネジメントができる方</li><li>曖昧な状況においても自律的に課題設定、解決に動ける方</li></ul><p><strong>待遇</strong><br>・正社員：年収840〜1200万<br>※経験、能力、前職給与を考慮し決定<br>※賞与：年2回（3月/9月）但し業績による<br>・社会保険、労働保険の完備<br>・通勤手当（上限月5万円）<br>・希望のPCを貸与（上限あり）<br>・各種資格補助手当<br>・完全週休2日制<br>・祝日、年末年始休暇<br>・育児休暇、産後休暇、介護休暇<br>・入社時有給10日付与<br>・正社員：9:30 始業 〜 18:30 終業</p>
+        <div class="meta-pills"><span class="pill">📍 東京都新宿区</span><span class="pill">🏠 オフィス勤務</span><span class="pill">💰 840-1200万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://age-technologies.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://age-technologies.co.jp/2746/" target="_blank">📄 資金調達プレスリリース</a><a class="lbtn lbtn-out" href="https://speakerdeck.com/agetechinc/5de31af87fdc59eda98813f1e654eeed" target="_blank">📊 会社資料</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">財務経理責任者</span><span class="badge badge-blue">上場企業</span></div>
+  <div class="co-name">株式会社ZUU</div>
+  <div class="co-url"><a href="https://zuu.co.jp/" target="_blank">https://zuu.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>設立</th><td>2013年</td></tr><tr><th>上場区分</th><td>東証グロース市場</td></tr><tr><th>売上</th><td>グループ全体で年間30億円規模</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <p>株式会社ZUUは当初、フィンテックとメディア事業を主軸に展開しておりました。特にメディア事業は、最盛期には月間2000万人以上の訪問者を誇り、その基盤を活かしたビジネスモデルを構築していました。</p><p>上場を果たし、事業を順調に拡大する中で、大きな転換点を迎えました。かつてのメディア事業の広告収入は大幅に減少したものの、この基盤を活かし、富裕層や経営者向けのマーケティング支援へと事業モデルを大きくピボットいたしました。同時に、金融事業を急速に立ち上げ、現在は年間60%の成長を遂げるまでに至っています。</p><p>直近では、創業61年の歴史を持つ経済誌「経済界」のM&Aも行い、新たな経営基盤と顧客層を獲得しています。現在、グループ全体で年間30億円規模の売上を達成しており、まさに再成長のフェーズにあると言えます。同社は、個の力で突破してきたフェーズから、組織として戦い、成長を加速させるフェーズにあります。この重要な転換期において、まさに「企業の成長をドライブする幹部」としてのインパクトとやりがいを得られることは、何よりの魅力ではないでしょうか。</p>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">金融領域のDXを推進し、「機会格差を解消し、持続的に挑戦できる世界へ」というパーパスを掲げる注目のフィンテック企業です。創業当初からフィンテックとメディア事業を中心に展開。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>金融領域のDXを推進し、「機会格差を解消し、持続的に挑戦できる世界へ」というパーパスを掲げる注目のフィンテック企業です。創業当初からフィンテックとメディア事業を中心に展開、2013年の創業からわずか5年で東証マザーズ（現グロース市場）上場を果たし、現在は以下の2つの事業を柱としています。</p><p>一つ目の事業は「セールステック事業」です。これは、月間2,000万人以上の訪問者を持つ大規模メディアを基盤とし、このメディアに集まる富裕層や経営者向けのマーケティング支援を提供しています。もう一つの事業は、法人個人の資金調達支援から新しい投資機会提供までを手掛ける広範なフィンテック事業です。セールステック事業で培った経営者や富裕層のネットワークを基盤として、資金調達から資産運用までを一貫して支援しています。</p><p>また、毎年積極的に資本業務提携やM&Aも推進しており、グループ会社の幹渉も含め、今後も事業を拡大していく方針です。</p><p>強みは元野村證券トップセールスである代表・冨田氏のビジョンに共感した金融のプロフェッショナル集団が、部門間の密な連携のもと、お客様へ包括的なソリューションを提供している点です。また、「鬼速PDCA」のカルチャーを徹底し、最短で最大の成果を追求する攻めの姿勢が、個人の圧倒的な成長と会社の成長を加速させています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 財務経理責任者（財務部長or執行役員CAO）</div>
+          <div class="job-preview">計8名のマネジメント・財務経理法務情シスガバナンス部門統括</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■事業概要</strong><br>オンラインメディア事業から発展し、現在はメディア・金融の2本柱でビジネス展開。特にオーナー系中小企業（数億円〜100億円規模）向けファイナンス・グロースコンサルティングを中心とする金融事業が急拡大しており、直近での2億円規模のファンド組成など事業の多角化が進んでいます。</p><p>今回の財務経理責任者は、各領域（財務・経理・法務・情シス・ガバナンス）には専門性を持つメンバー/外部パートナーが存在するため、部長に求める役割は「自ら全てを実務遂行すること」ではなく、各専門機能を束ね、経営意思決定を現場運用へ落とし込むことを期待しています。</p><p><strong>■具体的業務</strong><br>以下の領域におけるマネジメントおよび体制構築（社内外の専門家を束ねたプロジェクト推進の役割）<br>・財務・経理・法務・情シス・ガバナンス部門の統括（計8名のマネジメント）<br>・月次/四半期/年次・連結決算の安定運用（外部パートナー協働と内製度向上）<br>・経営戦略の実装推進、および経営層へのレポーティング<br>・内部統制・情報セキュリティ・全社ガバナンスの再構築と運用浸透<br>※人事・労務領域は別部門担当のため管轄外</p><p><strong>■ 求める役割</strong></p><ul><li><strong>① コーポレート全体の優先順位整理・統制</strong><br>○ 各機能の課題整理<br>○ 事故リスクの把握<br>○ 経営判断の実装<br>○ 各部門間の調整<br>○ 全社最適での優先順位設計</li><li><strong>② 経営と専門機能の接続</strong><br>○ 法務・財務・経理など、各専門家の論点を理解しながら、<br>■ CEO<br>■ COO<br>■ 事業責任者<br>○ に対して、経営視点で翻訳・整理できること。<br>単なる管理業務ではなく、&quot;経営支援機能&quot;としてコーポレートを運営できることが重要。</li><li><strong>③ ガバナンス・事故対応力</strong><br>○ 特に現フェーズにおいては、<br>■ 内部統制<br>■ J-SOX<br>■ 規程整備<br>■ 権限設計<br>■ 稟議運用<br>■ 情報管理<br>■ 委員会設計<br>などを、「制度」だけでなく、&quot;現場運用レベル&quot;まで落とし込めることが必要。</li></ul><p><strong>＜入社後のイメージ＞</strong><br>部長/マネージャーとして入社▶コーポレート管理部長になっていただき、状況をみて執行役員に任用（早い場合は3〜6ヶ月での任用）</p><p><strong>【必須要件】</strong></p><ul><li><span class='tag tag-must'>MUST</span> 上場（準備含む）水準の企業における会計・経理領域における高い専門性とマネジメント経験</li><li><span class='tag tag-must'>MUST</span> 連結経理の実務経験</li><li><span class='tag tag-must'>MUST</span> 「制度を作った」だけでなく、「制度を運用に乗せた」経験</li></ul><p><strong>【歓迎要件】</strong></p><ul><li><span class='tag tag-want'>WANT</span> IPO準備企業やベンチャー/グロース企業のコーポレート責任者</li><li><span class='tag tag-want'>WANT</span> 大手でのグループ会社立ち上げ等に関与した経験</li><li><span class='tag tag-want'>WANT</span> 経営企画×管理部門のハイブリッド経験者</li><li><span class='tag tag-want'>WANT</span> 未整備な環境を前向きに捉え、自ら課題解決に取り組める姿勢</li><li><span class='tag tag-want'>WANT</span> 経営陣の要望を汲みながら業務推進でき、社内外の関係者と円滑に連携できる高いコミュニケーション能力</li></ul><p><strong>待遇</strong><br>■ 年収1000〜1500万円を想定<br>■ 年収+業績連動賞与、加えて幹部の方には社長からの株式贈与（コールオプション）も付与実績（幹部以上の方は2年に1度付与実績あり）<br><br>健康保険,厚生年金保険,労災保険,雇用保険<br>交通費支給（上限50,000円／月）<br><br>【福利厚生・社内制度】<br>・社員紹介採用インセンティブ制度<br>・勉強会の開催<br>・メンター制度<br>・MVP表彰制度<br>・キャリアアップ支援制度<br>・関東ITソフトウェア健康保険組合<br>・在宅勤務制度（週2回まで在宅勤務可）<br>・従業員サーベイ<br>・出産祝い金制度<br>・社内コミュニケーション費用補助制度<br>・オンラインカウンセリング<br>・産業医面談<br>・服装自由<br>・健康診断、人間ドック、インフルエンザワクチン費用補助制度<br>・完全週休2日制（土日祝休み）<br>・年次有給休暇<br>・年末年始休暇<br>・慶弔休暇<br>・産休・育休<br>・特別休暇（7月～9月の任意の日に2日間＋12月〜2月の任意の日に2日間　※2024年度）<br>9:00-18:00</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 週2回在宅勤務可</span><span class="pill">💰 1000-1500万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://zuu.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">コーポレート責任者</span><span class="badge badge-blue">未上場（IPO視野）</span></div>
+  <div class="co-name">株式会社IPPO（イッポ）</div>
+  <div class="co-url"><a href="https://ippooffice.co.jp/" target="_blank">https://ippooffice.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都渋谷区道玄坂１丁目１６−３　渋谷センタープレイス 5階</td></tr><tr><th>設立</th><td>2018年</td></tr><tr><th>従業員数</th><td>50名</td></tr><tr><th>売上</th><td>約7億円</td></tr><tr><th>上場区分</th><td>未上場（IPO視野）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li><strong>120％成長を継続する急成長フェーズ</strong></li><li><strong>粗利率100％という高収益モデルを実現</strong></li><li><strong>売上7億円規模まで事業拡大</strong></li><li><strong>累計2,000件以上の居抜き転居実績</strong></li><li><strong>外部資本に依存しない自己資本経営を継続</strong><br>外部資本を入れない完全自己資本で経営を行っています。現在は社員50名の壁を超えるフェーズであり、「社員が誇れる会社を作る」という目標に向け、その過程の選択肢としてIPO（上場）も視野に入れています。</li><li><strong>圧倒的なインセンティブと評価制度</strong><br>成果に対する還元が非常に手厚く、インセンティブを含めて年収5000万円に達するトップセールスも在籍しています。プレイヤーとして圧倒的に稼ぐことも、マネジメント層として組織構築に携わることも可能な環境です。</li><li><strong>裁量とチャンスに溢れたフェーズ</strong><br>現在、次なる成長基盤を作るためにミドルマネージャー層やコーポレート部門の強化を急務としています。組織の急拡大期だからこそ、役割や権限の委譲も含めて大きな裁量を持って活躍できるチャンスが豊富です。</li><li><strong>20代〜30代の若手が多く、フラットで働きやすい社風</strong><br>男女比はほぼ半々で、業界経験不問・人柄重視の採用を行っています。有給の他に夏季・年末年始休暇などもしっかり取得でき、仕事とプライベートのバランスを取りながら全力で成長できる環境が整っています。</li><li><strong>VC・スタートアップとの強固なネットワーク</strong><br>多数のベンチャーキャピタル（VC）と提携しており、日本を牽引する熱量の高いスタートアップ経営陣と直接やり取りをしながら、彼らの事業成長の大きな節目（オフィス移転）を最前線で支援できるやりがいがあります。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">株式会社IPPOは、スタートアップ・ベンチャーに特化したオフィス移転・退去コンサルティングや、居抜きオフィス情報メディア「ハイッテ」の運営、オフィスBPOを行う不動産テック企業です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>株式会社IPPOは、スタートアップ・ベンチャーに特化したオフィス移転・退去コンサルティングや、居抜きオフィス情報メディア「ハイッテ」の運営、オフィスBPOを行う不動産テック企業です。</p><p>「ただの不動産屋ではなく、挑戦者と共に社会に価値あるサービスを生み出したい」という代表の強い思いから2018年に設立されました。同社の最大の強みであり他社との違いは、経営戦略や採用計画までヒアリングし事業成長に伴走する点と、手数料等の情報を全て開示する透明性の高さです。また、原状回復費用や移転の手間を大幅に削減できる「居抜き」での入退去支援を一気通貫で行っています。</p><p>その独自のノウハウと強固な情報網により、毎月200棟近い居抜き物件が集まり、居抜きオフィスのご紹介実績は90%以上。昨年は年間386件の移転を成功に導き、常に120%成長、売上約7億円という圧倒的な実績を誇ります。急成長企業と同じ目線で課題解決に挑める、熱量の高い環境です。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 コーポレート責任者（CHRO/Head of Corporate/管理部長クラス）</div>
+          <div class="job-preview">管理体制再設計・IPO視野のガバナンス整備・50人の壁突破</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■ミッション</strong><br>管理体制再設計、予算管理/法務/労務/評価制度統合、50人の壁突破、IPO視野のガバナンス整備、管理会計導入<br>フェーズ：ゼロイチ〜再設計〜仕組み化（守り強化、攻めとの分業設計）</p><p><strong>■現状の課題と背景</strong></p><ul><li><strong>制度設計と人事運用の知見不足：</strong>評価制度設計、フィードバック運用、採用基準の定義などで代表が判断基準を持ち切れていない。</li><li><strong>実務2名＋業務委託マネージャー依存：</strong>全体設計・標準化・ツール導入の推進といった「上位設計」が内製化されていない。</li><li><strong>経理・労務は外部委託が中心で内製は限定的。</strong>将来的な内製化意向はあるが、現状は外注活用が基本方針。</li></ul><p><strong>■具体的業務</strong></p><ul><li><strong>採用戦略再設計：</strong>ミドル営業の要件定義、チャネル別KPI（エージェント、ダイレクト、リファラル、競合転職）の設計・運用、着手金モデルのエージェントマネジメント、LinkedIn運用最適化（DMテンプレ、ABテスト、返信率改善、ランチ面談〜内定のコンバージョン管理）。</li><li><strong>経理・リスク統括力：</strong>月次・決算プロセスの安定化、将来IPO選択肢に向けたガバナンス・内部統制の叩き台（現事業モデルがIPO型でない現実を踏まえ、過剰投資を避ける見極め）。</li><li><strong>ツール導入・運用改善：</strong>既存ツールの棚卸し、要件定義、運用ルール策定、ダッシュボード化（採用ファネル、オン/オフボーディング、評価サイクル、面接SLA等）。</li></ul><p><strong>【必須要件】</strong></p><ul><li><span class='tag tag-must'>MUST</span> ベンチャー〜ミドルでの管理部門立ち上げ、業務委託ハブ運用、ガバナンス/リスク管理の統合経験</li><li><span class='tag tag-must'>MUST</span> 人事・経理・法務いずれかの深い専門性＋全体統合</li></ul><p><strong>【歓迎要件】</strong></p><ul><li><span class='tag tag-want'>WANT</span> 人事（採用・評価・制度）に強みを持ち、経理やリスクまで横断カバーできる広義のコーポレート統括。</li><li><span class='tag tag-want'>WANT</span> 業務委託マネージャー依存の現状を内製化するためのプレイングマネージャー。実務ハンズオンを厭わず、組織設計・プロセス標準化を推進。</li><li><span class='tag tag-want'>WANT</span> 制度設計（等級・評価・報酬・フィードバック運用）の立ち上げ・刷新経験者。採用基準定義・JD整備・面接官訓練・採用広報まで一気通貫で設計。</li></ul><p><strong>待遇</strong><br>年収　1,000万円〜1,200万円<br><br>・出産、育児支援制度（フルタイムで半年以上勤務後に適用）<br>・インフルエンザ予防接種<br>・定期健康診断<br>・住宅手当あり※規定有<br>・福祉はぐくみ企業年金基金制度<br>・オンライン診療制度<br>・資格手当<br>・資格取得支援<br>・研修制度<br><br>年間休日120日<br>土日祝日、年末年始休暇、夏季休暇<br>9:30〜18:30（休憩1時間）<br>・時間外労働の有無　有<br>・時間外手当の支給について　固定残業45hあり／超過分別途支給</p>
+        <div class="meta-pills"><span class="pill">📍 東京都渋谷区</span><span class="pill">🏠 オフィス勤務</span><span class="pill">💰 1000-1200万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://ippooffice.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが佐藤 俊一郎 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
